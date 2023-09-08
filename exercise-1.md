@@ -1,93 +1,78 @@
 # Deploy `quotes-flask` with `kubectl` and see it working
 
-In this exercise, we will go through the steps required to deploy a `quotes-flask` application using `kubectl` and integrate it with ArgoCD. By the end, you should be able to see your application running and interact with it via ArgoCD's user interface.
+## Learning Goals
 
-## Objectives:
+- Fork and manage repositories in GitHub.
+- Understand and utilize ArgoCD repositories.
+- Familiarize with the "app of apps" setup in ArgoCD.
+- Navigate and interact with the ArgoCD UI.
 
-- **Getting your ArgoCD repository up and running.**
-  - Fork the provided repository.
-  - Share the fork link with your trainer.
-  - Trainer will add your fork to the main ArgoCD instance.
-  - Understand and set up an "app of apps" to create URLs for each trainee. This is achieved using ArgoCD Application sets.
-  - Access and explore the ArgoCD UI.
+## Introduction
 
----
+In this exercise, you will be deploying the `quotes-flask` application using `kubectl` and integrating it with ArgoCD. This will give you hands-on experience with application deployment and management in ArgoCD.
 
-### 1. Forking the Repository
+## Subsections
 
-**Duration:** 10 minutes
+- **Forking the Repository**
+- **Sharing the Fork with Trainer**
+- **Setting up "App of Apps"**
+- **Exploring the ArgoCD UI**
 
-**Steps:**
+<details>
+<summary>:bulb: About ArgoCD</summary>
 
-1. Navigate to the provided GitHub repository URL.
-2. In the top-right corner of the page, click on the `Fork` button.
-3. Once forked, you'll be redirected to your own copy of the repository.
-4. Copy the URL of your forked repository.
+ArgoCD is a declarative, GitOps continuous delivery tool for Kubernetes. It facilitates the management and deployment of applications within Kubernetes using Git repositories as the source of truth for defining the desired application state.
 
-**Expected Outcome:**  
-You should now have a personal copy of the repository on your GitHub account.
+</details>
 
----
+## Exercise
 
-### 2. Send the Fork Link to the Trainer
+### Overview
 
-**Duration:** 5 minutes
+- Fork the provided repository.
+- Share the forked repository link with your trainer.
+- Setup an "app of apps" within ArgoCD.
+- Access and familiarize with the ArgoCD UI.
 
-**Steps:**
+### Step by Step Instructions
 
-1. Send the URL of your forked repository to your trainer using the preferred communication method.
+<details>
+<summary>More Details</summary>
 
-**Expected Outcome:**  
-Your trainer should acknowledge the receipt of the link and proceed with the next steps.
+**Forking the Repository**
 
----
+- Navigate to the provided GitHub repository URL.
+- In the top-right corner of the page, click on the `Fork` button. This creates a personal copy of the repository on your GitHub account.
+- Copy the URL of your forked repository.
 
-### 3. Trainer Adds Your Repository
+> :bulb: The forked repository acts as your personal workspace where you can make changes without affecting the original project.
 
-**Duration:** 10 minutes (This step is executed by the trainer)
+**Sharing the Fork with Trainer**
 
-**Steps:**  
+- Send the URL of your forked repository to your trainer using the preferred communication method.
+  
+> :bulb: The trainer will use this link to integrate your repository with ArgoCD.
 
-1. Trainer logs into the ArgoCD instance.
-2. They navigate to `Settings > Repositories`.
-3. Click on `Connect Repo using HTTPS` and paste the URL of the trainee's forked repository.
-4. After adding, the repository should be listed under "Connected repositories."
+**Setting up "App of Apps"**
 
-**Expected Outcome:**  
-Your forked repository is now connected to ArgoCD.
+- Familiarize yourself with the concept of ArgoCD's "app of apps" [here](<Insert Link to Documentation or Resource>).
+- Navigate to your forked repository.
+- Create or modify the necessary YAML files to represent an "app of apps" setup.
+  
+> :bulb: This step involves creating an `Application` resource for each trainee and pointing to the correct URL.
 
----
+**Exploring the ArgoCD UI**
 
-### 4. Setting Up "App of Apps" 
+- Open a browser and navigate to the provided ArgoCD instance URL.
+- Log in using the provided credentials.
+- Click on your application to see its details and status.
 
-**Duration:** 20 minutes
+> :bulb: The ArgoCD UI provides a visual representation of your deployments and their current states.
 
-**Steps:**  
+</details>
 
-1. Familiarize yourself with the concept of ArgoCD's "app of apps" [here](<Insert Link to Documentation or Resource>).
-2. Navigate to your forked repository.
-3. Create or modify the necessary YAML files to represent an "app of apps" setup. This typically involves creating an `Application` resource for each trainee.
-4. Ensure that each application points to the correct URL for the respective trainee.
+### Clean Up
 
-**Expected Outcome:**  
-Each trainee should have their own application defined in the "app of apps" setup.
+- If you made any temporary changes or created temporary files during the exercise, ensure to remove or revert them to keep your workspace clean.
+- Logout from the ArgoCD UI.
 
----
-
-### 5. Access and Explore the ArgoCD UI
-
-**Duration:** 15 minutes
-
-**Steps:**  
-
-1. Open a browser and navigate to the provided ArgoCD instance URL.
-2. Log in using the provided credentials.
-3. Once logged in, you should see a list of applications, including the ones you just set up in the "app of apps."
-4. Click on your application to see its details and status.
-
-**Expected Outcome:**  
-You should be able to see the status of your `quotes-flask` application deployment and any other relevant details in the ArgoCD UI.
-
----
-
-**Note:** Ensure all links and resources mentioned above are provided to the trainees to aid them in the exercise.
