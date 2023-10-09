@@ -1,4 +1,4 @@
-# Deploy `quotes-flask` with `kubectl` and see it working
+# Setup
 
 ## Learning Goals
 
@@ -110,6 +110,10 @@ kubectl config view --minify -o jsonpath='{..namespace}'
 
 - Click on `Create`.
 - Head back to the main page and see that the application is now listed.
+
+![alt](img/unsynced-app-overview.png)
+
+The application is in a `OutOfSync` state. This is because we have not yet synced the application with the repository. We will do this in the next step.
 
 </details>
 
