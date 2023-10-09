@@ -1,0 +1,8 @@
+backend:
+  replicas: 1
+  tag: release
+frontend:
+  replicas: 1
+  service:
+    type: NodePort
+  tag: release

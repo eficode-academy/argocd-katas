@@ -28,51 +28,90 @@ ArgoCD is a declarative, GitOps continuous delivery tool for Kubernetes. It faci
 ## Exercise
 
 ### Overview
+In this exercise we are creating your own instance of this templated repository, connecting that to ArgoCD
 
-- Fork the provided repository.
-- Share the forked repository link with your trainer.
-- Setup an "app of apps" within ArgoCD.
+- Creating an instance of the template repository
 - Access and familiarize with the ArgoCD UI.
+- Setup an "app of apps" within ArgoCD.
 
 ### Step by Step Instructions
 
 <details>
 <summary>More Details</summary>
 
-**Forking the Repository**
+### Overview
 
-- Navigate to the provided GitHub repository URL.
-- In the top-right corner of the page, click on the `Fork` button. This creates a personal copy of the repository on your GitHub account.
-- Copy the URL of your forked repository.
 
-> :bulb: The forked repository acts as your personal workspace where you can make changes without affecting the original project.
+<details>
+<summary>:bulb: This requires git email and name to  configured on your machine. If you have not done this, here are the commands to set it up</summary>
 
-**Sharing the Fork with Trainer**
+You need to provide your email and name to git with the following commands.
 
-- Send the URL of your forked repository to your trainer using the preferred communication method.
-  
-> :bulb: The trainer will use this link to integrate your repository with ArgoCD.
+``` bash
+git config --global user.email "you@example.com"
+git config --global user.name "Your Name"
+```
 
-**Setting up "App of Apps"**
+</details>
 
-- Familiarize yourself with the concept of ArgoCD's "app of apps" [here](<Insert Link to Documentation or Resource>).
-- Navigate to your forked repository.
-- Create or modify the necessary YAML files to represent an "app of apps" setup.
-  
-> :bulb: This step involves creating an `Application` resource for each trainee and pointing to the correct URL.
+### Tasks
+
+**Creating a repository from the template**
+
+-  Go to Code tab of this repository and click `Use this template`
+
+![Use this template](img/template.png)
+
+-  Select your GitHub user as the owner and name the repository. Leave the repo public to have unlimited action minutes.
+
+> :bulb: **From this point forward, all actions should be performed in the repository you just created, not the template repository**
 
 **Exploring the ArgoCD UI**
 
 - Open a browser and navigate to the provided ArgoCD instance URL.
 - Log in using the provided credentials.
-- Click on your application to see its details and status.
+- See that the main page shows a list of applications that are currently deployed in the cluster.
+- In the navigation bar, click on `Settings` to create a connection to your own repository.
+- Click on `Repositories` and then `Connect Repo`.
+- Fill in the following details:
+  - **Connection method**: `HTTPS`
+  - **Type**: `Git`
+  - **Project**: `default`
+  - **URL**: <your repository URL>
+- Click on `Connect`.
+- See that the repository is now connected to ArgoCD.
 
-> :bulb: The ArgoCD UI provides a visual representation of your deployments and their current states.
+![alt](img/repository_synced.png)
+
+
+**Setting up "App of Apps"**
+
+In order to do this, we first need to know our own namespace. We can do this by running the following command:
+
+``` bash
+kubectl config view --minify -o jsonpath='{..namespace}'
+```
+
+
+- Click on `Applications` in the navigation bar to see the list of applications that are currently deployed in the cluster.
+- Click on `New App` to create a new application.
+- Fill in the following details:
+  - **Application Name**: <your name>-quotes-flask
+  - **Project Name**: `default`
+  - **Sync Policy**: `Manual`
+  - **Repository URL**: <your repository URL>
+  - **Revision**: `HEAD`
+  - **Path**: `quotes-flask/k8s`
+  - **Cluster**: `in-cluster`
+  - **Namespace**: <your namespace>
+
+![](img/app1.png)
+![](img/app2.png)
+
+- Click on `Create`.
+- Head back to the main page and see that the application is now listed.
 
 </details>
 
-### Clean Up
 
-- If you made any temporary changes or created temporary files during the exercise, ensure to remove or revert them to keep your workspace clean.
-- Logout from the ArgoCD UI.
 
