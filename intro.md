@@ -103,6 +103,40 @@ This can be handy as a quick way to revert changes that were made in error. Howe
 
 In the later exercises, we will automate the sync process, making ArgCD revert the changes automatically.
 
+**Testing Self-Heal Policy**
+
+* In the ArgoCD UI, select the `quotes-flask` application.
+* Click on `app details` and click on `Edit`.
+* Scroll down to `sync policy` and enable that.
+* Use `kubectl` to make a change to the `quotes-flask` application (e.g., scale the replicas to 4):
+
+   ```bash
+   kubectl scale deployment frontend --replicas=4
+   ```
+
+* verify that there are four replicas:
+
+   ```bash
+   kubectl get pods
+   ```
+* In the ArgoCD UI, notice that the application is now `OutOfSync` because the live state (4 replicas) differs from the desired state in the Git repository.
+
+* In the ArgoCD UI, select the `quotes-flask` application.
+
+* Then enable the `Self Heal` section under `Sync Policy` and click on `Save`.
+
+Now, if you make a change to the application using `kubectl`, ArgoCD will automatically revert the change to the desired state defined in the Git repository.
+
+* Use `kubectl` to see that ArgoCD has reverted the change:
+```bash
+kubectl get pods
+NAME                        READY   STATUS    RESTARTS   AGE
+backend-5cd66f88c-mchxn     1/1     Running   0          20h
+frontend-6776498dd8-xwjpq   1/1     Running   0          20h
+frontend-6776498dd8-zfw5l   1/1     Running   0          20h
+postgres-7bc8b45445-kshd8   1/1     Running   1          20h
+```
+
 **Troubleshooting Faulty Manifests**
 
 * Intentionally introduce an error in one of the Kubernetes manifests in your GitHub repository (e.g., a typo in a field name).
@@ -112,3 +146,4 @@ In the later exercises, we will automate the sync process, making ArgCD revert t
 * Sync the application again in ArgoCD. The sync should now succeed.
 
 </details>
+
