@@ -1,2 +1,2 @@
 service:
-  type: ClusterIP
+  type: NodePort
