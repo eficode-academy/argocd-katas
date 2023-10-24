@@ -69,8 +69,14 @@ git config --global user.name "Your Name"
 **Exploring the ArgoCD UI**
 
 - Open a browser and navigate to the provided ArgoCD instance URL.
-- Log in using the provided credentials.
-- See that the main page shows a list of applications that are currently deployed in the cluster.
+- Log in using the provided credentials. You can also get them by running the following command:
+
+``` bash
+kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
+```
+
+- See that the main page shows a list of applications that are currently deployed in the cluster. It might not show any applications at the moment, but we will be deploying one in the next step.
+
 - In the navigation bar, click on `Settings` to create a connection to your own repository.
 - Click on `Repositories` and then `Connect Repo`.
 - Fill in the following details:
