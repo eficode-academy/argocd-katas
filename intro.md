@@ -114,7 +114,7 @@ In the later exercises, we will automate the sync process, making ArgCD revert t
    kubectl scale deployment frontend --replicas=4
    ```
 
-* verify that there are four replicas:
+* Verify that there are four replicas:
 
    ```bash
    kubectl get pods
