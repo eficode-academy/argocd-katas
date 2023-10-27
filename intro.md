@@ -76,7 +76,7 @@ replicaset.apps/postgres-7bc8b45445   1         1         1       8m2s
 * Make a change to the `quotes-flask` application in your GitHub repository
     * Change the replica count of the `frontend` deployment to `2`.
     * Commit and push the changes to the repository.
-* go to the ArgoCD UI.
+* Go to the ArgoCD UI.
     * Select the `quotes-flask` application and click on `Refresh`. This will update the live view in ArgoCD with the current state of the cluster.
     * Click on `Diff`. This will show the differences between the live application and the desired state in the Git repository. If the full diff is too long, you click on the `compact diff` button to see a summary of the changes.
     * Click on `Sync` and confirm with `Synchronize` to deploy the changes you made in the repository to the cluster.
