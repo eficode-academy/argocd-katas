@@ -28,7 +28,7 @@ In this exercise, you will:
 
 **Understanding Refresh vs. Sync**
 
-- **Refresh**: This action updates the live view in ArgoCD with the current state of the cluster. It does not change any resources in the cluster.
+- **Refresh**: This action updates the live view in ArgoCD with the current state of the cluster and the state of the git repo. It does not change any resources in the cluster.
 - **Sync**: This action deploys the desired state from the Git repository to the cluster. If there are differences between the Git repo and the cluster, Sync will make the necessary changes to align them.
 
 ### Step by Step Instructions
