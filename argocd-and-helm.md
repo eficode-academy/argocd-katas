@@ -2,7 +2,7 @@
 
 ## Learning Goals
 
-- Deploy WordPress using Helm with custom values.
+- Deploy Jenkins using Helm with custom values.
 - Modify Helm values for customization.
 - Put helm values in a values file utilizing multi-source.
 
@@ -34,14 +34,14 @@ sources:
   # Specify the repository URL for the Helm chart.
   - repoURL: 'https://charts.bitnami.com/bitnami'
     # Specify the target revision of the helm repository.
-    targetRevision: 18.0.8
-    # Specify the name of the Helm chart as "wordpress".
-    chart: wordpress
+    targetRevision: 12.4.0
+    # Specify the name of the Helm chart as "Jenkins".
+    chart: jenkins
     helm:
       # Reference the values file for the Helm chart in another repository.
       valueFiles:
         # Include a values file from a location specified by a variable "$values".
-        - $values/wordpress/values.yaml
+        - $values/jenkins/values.yaml
 
     # Specify the second source; URL for the Git repository.
   - repoURL: 'https://github.com/<YOUR GIT REPO>/argocd-katas'
@@ -67,35 +67,37 @@ In this exercise, you will:
 
 ### Tasks
 
-**Deploying WordPress with Bitnami Helm**
+**Deploying Jenkins with Bitnami Helm**
 - Look into the repository site to see that a repository called `bitnami` with the URL `https://charts.bitnami.com/bitnami` is there.
 - Click on `Applications` in the navigation bar.
 - Click on `New App` to create a new application.
 - Fill in the following details:
-  - **Application Name**: <your name>-quotes-flask
+  - **Application Name**: <your name>-jenkins
   - **Project Name**: `default`
   - **Sync Policy**: `Automatic`
   - **Repository Type**: `Helm`
   - **Repository URL**: https://charts.bitnami.com/bitnami (or select from the dropdown)
-  - **Chart**: `wordpress`
-  - **Version**: `18.0.8`
+  - **Chart**: `Jenkins`
+  - **Version**: `12.4.0`
   - **Cluster**: `in-cluster` or `https://kubernetes.default.svc`
   - **Namespace**: <your namespace>
 
 Under the helm parameters, you can see that there are a lot of parameters that can be customized. We will be customizing one of them.
 
 - Find `service.type` and change it to `NodePort`.
+- Find `jenkinsUser` and change it to `student`.
+- Find `jenkinsPassword` and change it to `student`.
 - Click on `Create`.
 
 - Click on the application to see the details.
-- Find the nodeport by clicking on the `studentx-wordpress` service.
-- Access the WordPress site by going to `http://<node-ip>:<nodeport>`. You can find the external node IP by running `kubectl get nodes -o wide`.
+- Find the nodeport by clicking on the `studentx-jenkins` service.
+- Access the Jenkins site by going to `http://<node-ip>:<nodeport>`. You can find the external node IP by running `kubectl get nodes -o wide`.
 
-**Customizing the WordPress deployment with a values file**
-We will change the values of the WordPress deployment by using a values file. This is useful when you want to keep your values in a separate file and not in the ArgoCD UI.
+**Customizing the Jenkins deployment with a values file**
+We will change the values of the Jenkins deployment by using a values file. This is useful when you want to keep your values in a separate file and not in the ArgoCD UI.
 
-- Save the current application manifest to your repository by clicking `App details` and then `Manifest`. It should be saved in the `wordpress` directory.
-- Look at the `values.yaml` file in the `wordpress` directory. You can see that the `service.type` is set to `NodePort`.
+- Save the current application manifest to your repository by clicking `App details` and then `Manifest`. It should be saved in the `Jenkins` directory.
+- Look at the `values.yaml` file in the `jenkins` directory. You can see that the `service.type` is set to `NodePort`.
 - Change your manifest to use the `values.yaml` file by changing `spec.source` to `spec.sources` like the following:
 
 ``` yaml
@@ -107,11 +109,11 @@ syncPolicy:
   automated: {}
 sources:
   - repoURL: 'https://charts.bitnami.com/bitnami'
-    targetRevision: 18.0.8
+    targetRevision: 12.4.0
     helm:
       valueFiles:
-        - $values/wordpress/values.yaml
-    chart: wordpress
+        - $values/jenkins/values.yaml
+    chart: jenkins
   - repoURL: 'https://github.com/<YOUR GIT REPO>/argocd-katas'
     targetRevision: main
     ref: values
