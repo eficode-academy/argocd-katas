@@ -84,8 +84,10 @@ In this exercise, you will:
 
 Under the helm parameters, you can see that there are a lot of parameters that can be customized. We will be customizing one of them.
 
+![alt](img/jenkins-values.png)
+
 - Find `service.type` and change it to `NodePort`.
-- Find `jenkinsUser` and change it to `student`.
+- Find `persistence.enabled` and change it to `false`.
 - Find `jenkinsPassword` and change it to `student`.
 - Click on `Create`.
 
@@ -122,6 +124,11 @@ sources:
 - Click save.
 
 > :bulb: it might be so that the Argo UI breaks when you click save. This is because the multi source feature is still in beta. If this happens, you can just refresh the page and it should be fine.
+
+![Jenkins sync problems](img/jenkins-app-sync-problem.png)
+
+> :bulb: It might also be that the application has a hard time syncing the new pod. You can try to delete the replica set and see if it works. If not, you can delete the application and try again.
+
 
 - Try to change something in the `values.yaml` file, push it up, and see that the application is synced automatically. If you lack inspiration, you can change the `service.type` to `ClusterIP` and see that the service is now a ClusterIP service.
 

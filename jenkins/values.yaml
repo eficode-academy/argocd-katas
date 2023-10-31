@@ -1,4 +1,4 @@
 service:
   type: NodePort
-jenkinsUser: student
+persistence.enabled: false
 jenkinsPassword: student
