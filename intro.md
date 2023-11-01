@@ -96,7 +96,7 @@ kubectl scale deployment frontend --replicas=3
 **Rolling Back Changes**
 
 * In the ArgoCD UI, select the `quotes-flask` application.
-* Navigate to the `History` tab.
+* Click on the `History and rollback` button.
 * Choose a previous successful sync and click `Rollback` to revert the application to that state.
 
 This can be handy as a quick way to revert changes that were made in error. However, it is not a replacement for a proper GitOps workflow. In a GitOps workflow, you would revert the changes in the Git repository and then sync the application in ArgoCD.
