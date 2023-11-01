@@ -72,7 +72,7 @@ In this exercise, you will:
 - Click on `Applications` in the navigation bar.
 - Click on `New App` to create a new application.
 - Fill in the following details:
-  - **Application Name**: <your name>-jenkins
+  - **Application Name**: `<your name>-jenkins`
   - **Project Name**: `default`
   - **Sync Policy**: `Automatic`
   - **Repository Type**: `Helm`
@@ -80,7 +80,7 @@ In this exercise, you will:
   - **Chart**: `Jenkins`
   - **Version**: `12.4.0`
   - **Cluster**: `in-cluster` or `https://kubernetes.default.svc`
-  - **Namespace**: <your namespace>
+  - **Namespace**: `<your namespace>`
 
 Under the helm parameters, you can see that there are a lot of parameters that can be customized. We will be customizing one of them.
 

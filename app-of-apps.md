@@ -39,7 +39,7 @@ In this exercise, we will work on organizing and managing Argo CD applications m
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: bootstrap->YOURNAME>
+  name: bootstrap-<YOURNAME>
   namespace: argocd
 spec:
   destination:

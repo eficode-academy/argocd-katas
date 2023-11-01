@@ -83,7 +83,7 @@ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.pas
   - **Connection method**: `HTTPS`
   - **Type**: `Git`
   - **Project**: `default`
-  - **URL**: <your repository URL>
+  - **URL**: `<your repository URL>`
 - Click on `Connect`.
 - See that the repository is now connected to ArgoCD.
 
@@ -102,14 +102,14 @@ kubectl config view --minify -o jsonpath='{..namespace}'
 - Click on `Applications` in the navigation bar to see the list of applications that are currently deployed in the cluster.
 - Click on `New App` to create a new application.
 - Fill in the following details:
-  - **Application Name**: <your name>-quotes-flask
+  - **Application Name**: `<your name>-quotes-flask`
   - **Project Name**: `default`
   - **Sync Policy**: `Manual`
-  - **Repository URL**: <your repository URL>
+  - **Repository URL**: `<your repository URL>`
   - **Revision**: `HEAD`
   - **Path**: `quotes-flask/k8s`
   - **Cluster**: `in-cluster`
-  - **Namespace**: <your namespace>
+  - **Namespace**: `<your namespace>`
 
 ![](img/app1.png)
 ![](img/app2.png)
