@@ -126,7 +126,7 @@ Now the jenkins app is connected with the bootstrap app.
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: quotes-student-
+  name: quotes-student-<YOURNUMBER>
   namespace: argocd
 spec:
   destination:
