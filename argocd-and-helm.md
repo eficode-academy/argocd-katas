@@ -15,40 +15,46 @@
 
 ```yaml
 
-# Reference to the project name.
-project: default
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: student-0-jenkins
+  namespace: argocd
+spec:
+  # Reference to the project name.
+  project: default
 
-# Define the destination cluster for this application.
-destination:
-  # The namespace the application should be deployed to.
-  namespace: student-X
-  # Specify the name of the destination cluster, either name or server url.
-  name: in-cluster
+  # Define the destination cluster for this application.
+  destination:
+    # The namespace the application should be deployed to.
+    namespace: student-X
+    # Specify the name of the destination cluster, either name or server url.
+    name: in-cluster
 
-# Define the synchronization policy for the Application.
-syncPolicy:
-  automated: {}
+  # Define the synchronization policy for the Application.
+  syncPolicy:
+    automated: {}
 
-# Define where the application will fetch its source from.
-sources:
-  # Specify the repository URL for the Helm chart.
-  - repoURL: 'https://charts.bitnami.com/bitnami'
-    # Specify the target revision of the helm repository.
-    targetRevision: 12.4.0
-    # Specify the name of the Helm chart as "Jenkins".
-    chart: jenkins
-    helm:
-      # Reference the values file for the Helm chart in another repository.
-      valueFiles:
-        # Include a values file from a location specified by a variable "$values".
-        - $values/jenkins/values.yaml
+  # Define where the application will fetch its source from.
+  sources:
+    # Specify the repository URL for the Helm chart.
+    - repoURL: 'https://charts.bitnami.com/bitnami'
+      # Specify the target revision of the helm repository.
+      targetRevision: 12.4.0
+      # Specify the name of the Helm chart as "Jenkins".
+      chart: jenkins
+      helm:
+        # Reference the values file for the Helm chart in another repository.
+        valueFiles:
+          # Include a values file from a location specified by a variable "$values".
+          - $values/jenkins/values.yaml
 
-    # Specify the second source; URL for the Git repository.
-  - repoURL: 'https://github.com/<YOUR GIT REPO>/argocd-katas'
-    # Specify the branch of the Git repository.
-    targetRevision: main
-    # name this source "values" for reference in the above source.
-    ref: values
+      # Specify the second source; URL for the Git repository.
+    - repoURL: 'https://github.com/<YOUR GIT REPO>/argocd-katas'
+      # Specify the branch of the Git repository.
+      targetRevision: main
+      # name this source "values" for reference in the above source.
+      ref: values
 
 ```
 </details>
@@ -98,9 +104,9 @@ Under the helm parameters, you can see that there are a lot of parameters that c
 **Customizing the Jenkins deployment with a values file**
 We will change the values of the Jenkins deployment by using a values file. This is useful when you want to keep your values in a separate file and not in the ArgoCD UI.
 
-- Save the current application manifest to your repository by clicking `App details` and then `Manifest`. It should be saved in the `Jenkins` directory.
-- Look at the `values.yaml` file in the `jenkins` directory. You can see that the `service.type` is set to `NodePort`.
-- Change your manifest to use the `values.yaml` file by changing `spec.source` to `spec.sources` like the following:
+- Look at the `values.yaml` file in the `jenkins` directory. You can see that the `service.type` is set to `NodePort`, and two other values.
+
+- Change your manifest in ArgoCD in to use the `values.yaml` file by changing `spec.source` to `spec.sources` like the following:
 
 ``` yaml
 project: default
@@ -132,7 +138,48 @@ sources:
 
 - Try to change something in the `values.yaml` file, push it up, and see that the application is synced automatically. If you lack inspiration, you can change the `service.type` to `ClusterIP` and see that the service is now a ClusterIP service.
 
+**Saving the application state in the repository**
 
+- Save the current application manifest to your repository
+  - clicking `App details` and then `Manifest`.
+  - It does not have the entire manifest, but it has the spec part.
+  - It should be saved in the `Jenkins` directory in your repository.
+  - Name it `jenkins-app.yaml`.
+
+<details>
+<summary>:bulb: Help me out</summary>
+
+The file that you will be saving looks like this, with the `<NUMBER>` being your student number and `<YOUR GIT REPO>` being your repository URL:
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: student-<NUMBER>-jenkins
+  namespace: argocd
+spec:
+  project: default
+  sources:
+  - repoURL: 'https://charts.bitnami.com/bitnami'
+    targetRevision: 12.4.0
+    helm:
+      valueFiles:
+        - $values/jenkins/values.yaml
+    chart: jenkins
+  - repoURL: 'https://github.com/<YOUR GIT REPO>/argocd-katas'
+    targetRevision: main
+    ref: values
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: student-<NUMBER>
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+```
+</details>
+
+We will use the saved manifest in the repository later.
 
 </details>
 
