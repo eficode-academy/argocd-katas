@@ -90,7 +90,7 @@ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.pas
 ![alt](img/repository_synced.png)
 
 
-**Setting up "App of Apps"**
+**Setting up your first application**
 
 In order to do this, we first need to know our own namespace. We can do this by running the following command:
 
