@@ -138,48 +138,5 @@ sources:
 
 - Try to change something in the `values.yaml` file, push it up, and see that the application is synced automatically. If you lack inspiration, you can change the `service.type` to `ClusterIP` and see that the service is now a ClusterIP service.
 
-**Saving the application state in the repository**
-
-- Save the current application manifest to your repository
-  - clicking `App details` and then `Manifest`.
-  - It does not have the entire manifest, but it has the spec part.
-  - It should be saved in the `Jenkins` directory in your repository.
-  - Name it `jenkins-app.yaml`.
-
-<details>
-<summary>:bulb: Help me out</summary>
-
-The file that you will be saving looks like this, with the `<NUMBER>` being your student number and `<YOUR GIT REPO>` being your repository URL:
-
-```yaml
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: student-<NUMBER>-jenkins
-  namespace: argocd
-spec:
-  project: default
-  sources:
-  - repoURL: 'https://charts.bitnami.com/bitnami'
-    targetRevision: 12.4.0
-    helm:
-      valueFiles:
-        - $values/jenkins/values.yaml
-    chart: jenkins
-  - repoURL: 'https://github.com/<YOUR GIT REPO>/argocd-katas'
-    targetRevision: main
-    ref: values
-  destination:
-    server: 'https://kubernetes.default.svc'
-    namespace: student-<NUMBER>
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-```
-</details>
-
-We will use the saved manifest in the repository later.
-
 </details>
 

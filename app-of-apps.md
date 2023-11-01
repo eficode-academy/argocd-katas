@@ -28,6 +28,7 @@ In this exercise, we will work on organizing and managing Argo CD applications m
   * Enable sync policy, prune and self-heal
 * kubectl delete parent app, make sure nothing is there. kubectl apply parent app again. 
 
+
 ## Step 1: Create Bootstrap App Manifest
 
 1. Navigate to the root of your local clone of the exercise repository.
@@ -39,12 +40,12 @@ In this exercise, we will work on organizing and managing Argo CD applications m
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: bootstrap-<YOURNAME>
+  name: bootstrap-student-<YOURNUMBER>
   namespace: argocd
 spec:
   destination:
     server: https://kubernetes.default.svc
-    namespace: <YOUR NAMESPACE>
+    namespace: student-<YOURNUMBER>
   project: default
   source:
     repoURL: <YOUR GITHUB REPO>
@@ -64,16 +65,60 @@ kubectl apply -f bootstrap-app.yaml
 
 1. Go to the Argo CD UI and verify that the bootstrap app is present. It should have an error saying that it cannot find the `apps` folder. This is expected.
 
-## Step 2: Create Folder for All Apps
+## Step 2: Create Folder for All Apps, and add Jenkins App Manifest to it.
 
-1. In the root of your repository, create a new folder named `apps`.
+Save the current application manifest to your repository in a new folder named `apps`.
 
-## Step 3: Move Jenkins App Manifest
+- Get the application manifest from the Argo CD UI:
+  - click `App details` and then `Manifest`.
+  - It does not have the entire manifest, but it has the spec part.
+  - It should be saved in the `apps` directory in your repository.
+  - Name it `jenkins-app.yaml`.
 
-1. Locate the Jenkins app manifest in your repository.
-2. Move the Jenkins app manifest into the `apps` folder you created in the previous step.
+<details>
+<summary>:bulb: Help me out</summary>
 
-## Step 4: Create the App Manifest for the Quotes Helm Chart
+The file that you will be saving looks like this, with the `<NUMBER>` being your student number and `<YOUR GIT REPO>` being your repository URL:
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: student-<NUMBER>-jenkins
+  namespace: argocd
+spec:
+  project: default
+  sources:
+  - repoURL: 'https://charts.bitnami.com/bitnami'
+    targetRevision: 12.4.0
+    helm:
+      valueFiles:
+        - $values/jenkins/values.yaml
+    chart: jenkins
+  - repoURL: 'https://github.com/<YOUR GIT REPO>/argocd-katas'
+    targetRevision: main
+    ref: values
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: student-<NUMBER>
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+```
+</details>
+
+- Go to the Argo CD UI and verify that the bootstrap app is present. It should now be updated to include the `apps` folder, and therefore the Jenkins app manifest.
+
+Now the jenkins app is connected with the bootstrap app.
+
+## Delete the jenkins app
+
+- In the Argo CD UI, delete the jenkins app.
+- What happens when you do that?
+
+
+## Create the App Manifest for the Quotes Helm Chart
 
 1. In the `apps` folder, create a file named `quotes-app.yaml` with the following content:
 
@@ -81,17 +126,17 @@ kubectl apply -f bootstrap-app.yaml
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: quotes
+  name: quotes-student-
   namespace: argocd
 spec:
   destination:
     server: https://kubernetes.default.svc
-    namespace: <YOUR NAMESPACE>
+    namespace: student-<YOUR number>
   project: default
   source:
     repoURL: https://github.com/eficode-academy/argocd-katas.git  # Update this URL if the helm chart is in a different repo
     targetRevision: HEAD
-    path: charts/quotes
+    path: quotes-flask/helm/quotes-flask
     helm:
       valueFiles:
         - values.yaml
@@ -101,26 +146,34 @@ spec:
       selfHeal: true
 ```
 
-## Step 5: Apply and Re-Apply the Bootstrap App
+- Click refresh in the Argo CD UI. The quotes app should now be present as an application in Argo CD.
+- Click on the quotes app to see all the resources that it creates.
 
+## Apply and Re-Apply the Bootstrap App
 
-2. Verify the applications are synced and running as expected.
+1. Verify the applications are synced and running as expected.
 
-3. Delete the bootstrap app from your cluster:
+1. Delete the bootstrap app from your cluster:
 
 ```bash
 kubectl delete -f bootstrap-app.yaml
 ```
 
-4. Verify that the applications and resources are removed.
+1. Verify that the applications and resources are removed.
 
-5. Re-apply the bootstrap app manifest to your cluster:
+```bash
+kubectl get all
+```
+
+1. Re-apply the bootstrap app manifest to your cluster:
 
 ```bash
 kubectl apply -f bootstrap-app.yaml
 ```
 
-6. Verify the applications are synced and running as expected again.
+1. Verify the applications are synced and running as expected again.
+
+You have now seen how fast it is to reapply your manifests to the cluster. This is a great way to recover from a disaster, or to make sure that your cluster is in the desired state.
 
 </details>
 
