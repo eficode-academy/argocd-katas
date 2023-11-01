@@ -2,13 +2,24 @@
 
 ## Learning Goals
 
+- Create a bootstrap app manifest
+- Arrange Argo CD app manifests in a folder structure
+
 ## Introduction
 
 In this exercise, we will work on organizing and managing Argo CD applications more effectively. We will create a bootstrap app manifest to serve as a starting point, structure our repository to accommodate multiple apps, and work with a new app manifest for a Helm chart.
 
 ## Exercise
 
-### Overview
+- Create Bootstrap App Manifest
+- Create Folder for All Apps
+- Move Jenkins App Manifest
+- Create the App Manifest for the Quotes Helm Chart
+
+### Step by step instructions
+
+<details>
+<summary>More Details</summary>
 
 * Create bootsrap app manifest
 * Create folder for all apps in the repo
@@ -110,6 +121,8 @@ kubectl apply -f bootstrap-app.yaml
 ```
 
 6. Verify the applications are synced and running as expected again.
+
+</details>
 
 ## Conclusion
 
