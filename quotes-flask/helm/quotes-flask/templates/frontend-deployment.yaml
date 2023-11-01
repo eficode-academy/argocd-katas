@@ -22,7 +22,13 @@ spec:
           name: quotes-flask-frontend
           ports:
             - containerPort: 5000
-          resources: {}
+          resources: 
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
           env:
             # load namespace from downward api
             # https://github.com/kubernetes/kubernetes/blob/release-1.0/docs/user-guide/downward-api.md
@@ -40,5 +46,6 @@ spec:
                 configMapKeyRef:
                   name: backend-config
                   key: backend_port
+                    
 
 status: {}
