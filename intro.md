@@ -78,7 +78,7 @@ replicaset.apps/postgres-7bc8b45445   1         1         1       8m2s
     * Commit and push the changes to the repository.
 * Go to the ArgoCD UI.
     * Select the `quotes-flask` application and click on `Refresh`. This will update the live view in ArgoCD with the current state of the cluster.
-    * Click on `Diff`. This will show the differences between the live application and the desired state in the Git repository. If the full diff is too long, you click on the `compact diff` button to see a summary of the changes.
+    * Click on `App Diff`. This will show the differences between the live application and the desired state in the Git repository. If the full diff is too long, you click on the `compact diff` button to see a summary of the changes.
     * Click on `Sync` and confirm with `Synchronize` to deploy the changes you made in the repository to the cluster.
 
 **Updating Replicas with `kubectl`**
