@@ -103,7 +103,7 @@ Under the helm parameters, you can see that there are a lot of parameters that c
 We will change the values of the Jenkins deployment by using a values file. This is useful when you want to keep your values in a separate file and not in the ArgoCD UI.
 
 - Look at the `values.yaml` file in the `jenkins` directory. You can see that the `service.type` is set to `NodePort`, and two other values.
-
+- TODO!!! EXPLAIN HOW TO GET TO THE MANIFEST
 - Change your manifest in ArgoCD in to use the `values.yaml` file by changing `spec.source` to `spec.sources` like the following:
 
 ``` yaml
