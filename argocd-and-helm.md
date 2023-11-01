@@ -63,8 +63,6 @@ spec:
 
 ### Overview
 
-In this exercise, you will:
-
 
 ### Step by Step Instructions
 
