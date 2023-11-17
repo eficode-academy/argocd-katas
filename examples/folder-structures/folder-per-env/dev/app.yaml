@@ -1,0 +1,27 @@
+
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: my-app
+  namespace: argocd
+spec:
+  project: default
+  sources:
+  - repoURL: 'https://github.com/eficode-academy/helm-katas/'
+    path: examples/apps/external-charts/todo
+    targetRevision: HEAD
+    helm:
+      valueFiles:
+        - $values/examples/folder-structures/folder-per-env/dev/values.yaml
+  - repoURL: 'https://github.com/eficode-academy/argocd-katas'
+    targetRevision: main
+    ref: values
+  source:
+    
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: student-0
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

@@ -1,0 +1,5 @@
+mysql:
+  primary:
+    resources:
+      limits:
+        memory: 1024Mi
