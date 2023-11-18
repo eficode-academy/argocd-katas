@@ -1,0 +1,46 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: pr-<NUMBER>
+  namespace: argocd
+spec:
+  generators:
+  - pullRequest:
+      github:
+        # The GitHub organization or user.
+        owner: <YOUR GITHUB USERNAME> #e.g. eficode-academy
+        # The Github repository
+        repo: <YOUR GIT REPO> #e.g. argocd-katas
+
+        # Labels is used to filter the PRs that you want to target. (optional)
+        labels:
+        - test
+      requeueAfterSeconds: 180
+  template:
+    metadata:
+      name: 'todo-<NUMBER>-{{branch}}-{{number}}'
+    spec:
+      project: "default"
+      source:
+        repoURL: 'https://github.com/eficode-academy/helm-katas.git'
+        targetRevision: 'main'
+        path: examples/apps/http-server
+        helm:
+          parameters:
+          - name: containerPort
+            value: "3000"
+          - name: image.repository
+            value: releasepraqma/todo-app
+          - name: image.tag
+            value: latest
+          - name: prefix
+            value: argo
+          - name: app
+            value: "todo-{{head_short_sha}}"
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: <YOUR NAMESPACE>
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
