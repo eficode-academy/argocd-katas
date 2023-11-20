@@ -26,7 +26,7 @@ In this exercise, you will:
 - Rollback to a previous state of the application.
 - Troubleshoot a faulty manifest and resolve the issue.
 
-**Understanding Refresh vs. Sync**
+:bulb: **Understanding Refresh vs. Sync**
 
 - **Refresh**: This action updates the live view in ArgoCD with the current state of the cluster and the state of the git repo. It does not change any resources in the cluster.
 - **Sync**: This action deploys the desired state from the Git repository to the cluster. If there are differences between the Git repo and the cluster, Sync will make the necessary changes to align them.
@@ -73,12 +73,12 @@ replicaset.apps/postgres-7bc8b45445   1         1         1       8m2s
 
 **Using the Diff Feature in UI**
 
-* Make a change to the `quotes-flask` application in your GitHub repository
+* Make a change to the `quotes-flask` application in your GitHub repository in the file quotes-flask/helm/quotes-flask/values.yaml
     * Change the replica count of the `frontend` deployment to `2`.
     * Commit and push the changes to the repository.
 * Go to the ArgoCD UI.
     * Select the `quotes-flask` application and click on `Refresh`. This will update the live view in ArgoCD with the current state of the cluster.
-    * Click on `App Diff`. This will show the differences between the live application and the desired state in the Git repository. If the full diff is too long, you click on the `compact diff` button to see a summary of the changes.
+    * Click on `App Diff`. This will show the differences between the live application and the desired state in the Git repository. If the full diff is too long, you click on the `compact diff` button to see a summary of the changes. _This did not work for me, the button was greyed out - N.Cs_
     * Click on `Sync` and confirm with `Synchronize` to deploy the changes you made in the repository to the cluster.
 
 **Updating Replicas with `kubectl`**
@@ -106,8 +106,7 @@ In the later exercises, we will automate the sync process, making ArgCD revert t
 **Testing Self-Heal Policy**
 
 * In the ArgoCD UI, select the `quotes-flask` application.
-* Click on `app details` and click on `Edit`.
-* Scroll down to `sync policy` and enable that.
+* Click on `app details`, scroll down to `sync policy` and enable Self Heal.
 * Use `kubectl` to make a change to the `quotes-flask` application (e.g., scale the replicas to 4):
 
    ```bash
@@ -141,7 +140,7 @@ postgres-7bc8b45445-kshd8   1/1     Running   1          20h
 
 * Intentionally introduce an error in one of the Kubernetes manifests in your GitHub repository (e.g., a typo in a field name).
 * Try to sync the application in ArgoCD. The sync will fail.
-* In the ArgoCD UI, navigate to the `Events` tab for the `quotes-flask` application. Here, you can see detailed error messages that will help you identify the issue.
+* In the ArgoCD UI, navigate to the `Events` tab under `app details` for the `quotes-flask` application. Here, you can see detailed error messages that will help you identify the issue.
 * Fix the error in the manifest, commit, and push the changes to the repository.
 * Sync the application again in ArgoCD. The sync should now succeed.
 
