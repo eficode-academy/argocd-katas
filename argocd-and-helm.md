@@ -8,7 +8,7 @@
 
 ## Introduction
 
-### Multi-source in ArgoCD
+### Multi-source deployment in ArgoCD
 
 <details>
 <summary>:bulb: Example</summary>
@@ -67,10 +67,8 @@ In this exercise, you will:
 
 - Deploy Jenkins in the ArgoCD UI using Bitnami Helm chart.
 - Change the source of the deployment file.
-- Use the Diff feature in the ArgoCD UI.
-- Update replicas of the application using `kubectl`.
-- Rollback to a previous state of the application.
-- Troubleshoot a faulty manifest and resolve the issue.
+- Write a multi-source deployment file.
+- Change the values in the deployment file for automatic changes to the Jenkins app.
 
 
 ### Step by Step Instructions
