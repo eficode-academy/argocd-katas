@@ -21,23 +21,23 @@ The repository is structured as follows:
 
 ```text
 .
-├── applicationsets # Values for 5-applicationsets.md
-├── 5-applicationsets.md
-├── 4-app-of-apps.md  
-├── 3-argocd-and-helm.md
+├── applicationsets # Values for applicationsets.md
+├── applicationsets.md
+├── app-of-apps.md  
+├── argocd-and-helm.md
 ├── img
-├── 2-intro.md
+├── intro.md
 ├── jenkins # Values for the Jenkins Helm Chart
 ├── LICENSE
 ├── quotes-flask # Example application
 ├── README.md
 ├── sealed-secrets.md
-├── 1-setup.md
+├── setup.md
 └── trainer # Trainer folder
 ```
 
 
 Links:
 
-https://codefresh.io/blog/argo-cd-best-practices/
-https://github.com/akuity/awesome-argo/blob/main/CONTRIBUTING.md
+* https://codefresh.io/blog/argo-cd-best-practices/
+* https://github.com/akuity/awesome-argo/blob/main/CONTRIBUTING.md
