@@ -1,5 +1,9 @@
 # Setup
 
+💡 **About ArgoCD**
+
+ArgoCD is a declarative, GitOps continuous delivery tool for Kubernetes. It facilitates the management and deployment of applications within Kubernetes using Git repositories as the source of truth for defining the desired application state.
+
 ## Learning Goals
 
 - Fork and manage repositories in GitHub.
@@ -10,20 +14,6 @@
 ## Introduction
 
 In this exercise, you will be deploying the `quotes-flask` application using `kubectl` and integrating it with ArgoCD. This will give you hands-on experience with application deployment and management in ArgoCD.
-
-## Subsections
-
-- **Forking the Repository**
-- **Sharing the Fork with Trainer**
-- **Setting up "App of Apps"**
-- **Exploring the ArgoCD UI**
-
-<details>
-<summary>:bulb: About ArgoCD</summary>
-
-ArgoCD is a declarative, GitOps continuous delivery tool for Kubernetes. It facilitates the management and deployment of applications within Kubernetes using Git repositories as the source of truth for defining the desired application state.
-
-</details>
 
 ## Exercise
 
@@ -52,6 +42,13 @@ git config --global user.email "you@example.com"
 git config --global user.name "Your Name"
 ```
 
+If you're unsure, check your configuration with the following commands.
+
+``` bash
+git config --global user.email
+git config --global user.name
+```
+
 </details>
 
 ### Tasks
@@ -62,7 +59,7 @@ git config --global user.name "Your Name"
 
 ![Use this template](img/template.png)
 
--  Select your GitHub user as the owner and name the repository. Leave the repo public to have unlimited action minutes.
+-  Select your GitHub user as the owner and name the repository (f.x. argocd-katas-training). Leave the repo public to have unlimited action minutes.
 
 > :bulb: **From this point forward, all actions should be performed in the repository you just created, not the template repository**
 
@@ -108,7 +105,7 @@ kubectl config view --minify -o jsonpath='{..namespace}'
   - **Repository URL**: `<your repository URL>`
   - **Revision**: `HEAD`
   - **Path**: `quotes-flask/k8s`
-  - **Cluster**: `in-cluster`
+  - **Cluster**: `in-cluster` OR https://kubernetes.default.svc
   - **Namespace**: `<your namespace>`
 
 ![](img/app1.png)
