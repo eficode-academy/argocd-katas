@@ -8,7 +8,7 @@
 
 ## Introduction
 
-### Multi-source in ArgoCD
+### Multi-source deployment in ArgoCD
 
 <details>
 <summary>:bulb: Example</summary>
@@ -63,6 +63,13 @@ spec:
 
 ### Overview
 
+In this exercise, you will:
+
+- Deploy Jenkins in the ArgoCD UI using Bitnami Helm chart.
+- Change the source of the deployment file.
+- Write a multi-source deployment file.
+- Change the values in the deployment file for automatic changes to the Jenkins app.
+
 
 ### Step by Step Instructions
 
@@ -103,8 +110,8 @@ Under the helm parameters, you can see that there are a lot of parameters that c
 We will change the values of the Jenkins deployment by using a values file. This is useful when you want to keep your values in a separate file and not in the ArgoCD UI.
 
 - Look at the `values.yaml` file in the `jenkins` directory. You can see that the `service.type` is set to `NodePort`, and two other values.
-- TODO!!! EXPLAIN HOW TO GET TO THE MANIFEST
-- Change your manifest in ArgoCD in to use the `values.yaml` file by changing `spec.source` to `spec.sources` like the following:
+- Now find the manifest in the ArgoCD UI by clicking on `app details`.
+- Change your manifest in ArgoCD in to use the `values.yaml` file by changing `source` to `sources` like the following:
 
 ``` yaml
 project: default
@@ -124,10 +131,11 @@ sources:
     targetRevision: main
     ref: values
 ```
+💡 Remember to add your own repo to the file as well, as seen on the bottom. Pay attention to formatting.
 
 - Click save.
 
-> :bulb: it might be so that the Argo UI breaks when you click save. This is because the multi source feature is still in beta. If this happens, you can just refresh the page and it should be fine.
+> :bulb: Argo UI may break when you click save. This is because the multi source feature is still in beta. If this happens, you can just refresh the page and it should be fine.
 
 ![Jenkins sync problems](img/jenkins-app-sync-problem.png)
 

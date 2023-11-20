@@ -1,6 +1,6 @@
 # argocd-katas
 
-Exercise list and order:
+Exercise list in order:
 
 * [Setup of your ArgoCD root application](setup.md)
 * [Introduction to ArgoCD](intro.md)
@@ -21,17 +21,18 @@ The repository is structured as follows:
 
 ```text
 .
-├── app-of-apps.md 
-├── argocd-and-helm.md
-├── exercise-template.md
+├── applicationsets # Values for 5-applicationsets.md
+├── 5-applicationsets.md
+├── 4-app-of-apps.md  
+├── 3-argocd-and-helm.md
 ├── img
-├── intro.md
+├── 2-intro.md
 ├── jenkins # Values for the Jenkins Helm Chart
 ├── LICENSE
 ├── quotes-flask # Example application
 ├── README.md
 ├── sealed-secrets.md
-├── setup.md
+├── 1-setup.md
 └── trainer # Trainer folder
 ```
 

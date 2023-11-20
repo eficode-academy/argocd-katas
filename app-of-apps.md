@@ -11,6 +11,8 @@ In this exercise, we will work on organizing and managing Argo CD applications m
 
 ## Exercise
 
+### Overview
+
 - Create Bootstrap App Manifest
 - Create Folder for All Apps
 - Move Jenkins App Manifest
