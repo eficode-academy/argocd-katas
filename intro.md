@@ -106,7 +106,7 @@ In the later exercises, we will automate the sync process, making ArgCD revert t
 **Testing Self-Heal Policy**
 
 * In the ArgoCD UI, select the `quotes-flask` application.
-* Click on `app details`, scroll down to `sync policy` and enable Self Heal.
+* Click on `app details`, scroll down to `sync policy` and enable Auto-Sync.
 * Use `kubectl` to make a change to the `quotes-flask` application (e.g., scale the replicas to 4):
 
    ```bash
