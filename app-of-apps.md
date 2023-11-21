@@ -36,7 +36,7 @@ In this exercise, we will work on organizing and managing Argo CD applications m
 1. Navigate to the root of your local clone of the exercise repository.
 2. Create a file named `bootstrap-app.yaml` with the following content:
 
-:bulB: NB! Make sure to replace the placeholders with your own values.
+:bulb: NB! Make sure to replace the placeholders with your own values.
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
