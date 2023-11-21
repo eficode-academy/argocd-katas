@@ -103,7 +103,7 @@ Under the helm parameters, you can see that there are a lot of parameters that c
 - Click on `Create`.
 
 - Click on the application to see the details.
-- Find the nodeport by clicking on the `studentx-jenkins` service.
+- Find the http nodeport by clicking on the `studentx-jenkins` service.
 - Access the Jenkins site by going to `http://<node-ip>:<nodeport>`. You can find the external node IP by running `kubectl get nodes -o wide`.
 
 **Customizing the Jenkins deployment with a values file**
