@@ -146,3 +146,6 @@ postgres-7bc8b45445-kshd8   1/1     Running   1          20h
 
 </details>
 
+### Cleanup
+
+Go ahead and delete the app in the ArgoCD UI. We will add it later as a true GitOps application
