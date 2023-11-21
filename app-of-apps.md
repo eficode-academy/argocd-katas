@@ -71,7 +71,7 @@ kubectl apply -f bootstrap-app.yaml
 
 Save the current application manifest to your repository in a new folder named `apps`.
 
-- Get the application manifest from the Argo CD UI:
+- Get the Jenkins application manifest from the Argo CD UI:
   - click `App details` and then `Manifest`.
   - It does not have the entire manifest, but it has the spec part.
   - It should be saved in the `apps` directory in your repository.
