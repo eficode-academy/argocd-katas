@@ -172,7 +172,7 @@ Events:                    <none>
 
 * Create a pull request in your git repo. The change does not matter at this time, since we are not using the source code in the pull request.
 
-* Remember to set the label `test` on the pull request.
+* Remember to set the label `test` on the pull request. The label does not exist, so create it in the Github UI.
 
 * Check that an application has been created in ArgoCD
 
