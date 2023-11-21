@@ -92,6 +92,81 @@ spec:
 kubectl apply -f applicationsets/pull-request.yaml
 ```
 
+* Make sure that it is there by listing the applicationsets: `k get applicationsets.argoproj.io -n argocd`.
+
+* Look at the status on it by `k describe applicationsets.argoproj.io -n argocd pr-X` where X is your number.
+
+Output should look like the following:
+
+```bash
+Name:         pr-0
+Namespace:    argocd
+Labels:       <none>
+Annotations:  <none>
+API Version:  argoproj.io/v1alpha1
+Kind:         ApplicationSet
+Metadata:
+  Creation Timestamp:  2023-11-21T21:25:24Z
+  Generation:          1
+  Resource Version:    75210
+  UID:                 ec6e52a5-b41a-4d7b-8f71-2fd1e2ac2078
+Spec:
+  Generators:
+    Pull Request:
+      Github:
+        Labels:
+          test
+        Owner:                sofusalbertsen
+        Repo:                 argocd-katas
+      Requeue After Seconds:  180
+  Template:
+    Metadata:
+      Name:  todo-0-{{branch}}-{{number}}
+    Spec:
+      Destination:
+        Namespace:  student-0
+        Server:     https://kubernetes.default.svc
+      Project:      default
+      Source:
+        Helm:
+          Parameters:
+            Name:         containerPort
+            Value:        3000
+            Name:         image.repository
+            Value:        releasepraqma/todo-app
+            Name:         image.tag
+            Value:        latest
+            Name:         prefix
+            Value:        argo
+            Name:         app
+            Value:        todo-{{head_short_sha}}
+        Path:             examples/apps/http-server
+        Repo URL:         https://github.com/eficode-academy/helm-katas.git
+        Target Revision:  main
+      Sync Policy:
+        Automated:
+          Prune:      true
+          Self Heal:  true
+Status:
+  Conditions:
+    Last Transition Time:  2023-11-21T21:25:25Z
+    Message:               Successfully generated parameters for all Applications
+    Reason:                ApplicationSetUpToDate
+    Status:                False
+    Type:                  ErrorOccurred
+    Last Transition Time:  2023-11-21T21:25:25Z
+    Message:               Successfully generated parameters for all Applications
+    Reason:                ParametersGenerated
+    Status:                True
+    Type:                  ParametersGenerated
+    Last Transition Time:  2023-11-21T21:25:25Z
+    Message:               ApplicationSet up to date
+    Reason:                ApplicationSetUpToDate
+    Status:                True
+    Type:                  ResourcesUpToDate
+Events:                    <none>
+```
+
 
 #### Test with a pull request
 
