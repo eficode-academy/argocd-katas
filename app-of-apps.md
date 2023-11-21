@@ -110,6 +110,7 @@ spec:
 ```
 </details>
 
+- Add, commit and push the jenkins-app.yaml to the repository.
 - Go to the Argo CD UI and verify that the bootstrap app is present. It should now be updated to include the `apps` folder, and therefore the Jenkins app manifest.
 
 Now the jenkins app is connected with the bootstrap app.
