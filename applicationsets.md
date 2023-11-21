@@ -29,7 +29,7 @@ Thus the ApplicationSet controller does not create/modify/delete Kubernetes reso
 
 #### Create an applicationset manifest
 
-In the `applicationsets` directory create a file called `pull-request.yaml` with the following content:
+In the `applicationsets` directory there is a file called `pull-request.yaml` with the following content:
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
