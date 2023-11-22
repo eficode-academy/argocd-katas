@@ -73,7 +73,7 @@ replicaset.apps/postgres-7bc8b45445   1         1         1       8m2s
 
 **Using the Diff Feature in UI**
 
-* Make a change to the `quotes-flask` application in your GitHub repository in the file quotes-flask/helm/quotes-flask/values.yaml
+* Make a change to the `quotes-flask` application in your GitHub repository in the file `quotes-flask/k8s/frontend-deployment.yaml`
     * Change the replica count of the `frontend` deployment to `2`.
     * Commit and push the changes to the repository.
 * Go to the ArgoCD UI.
