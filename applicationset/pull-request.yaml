@@ -11,7 +11,9 @@ spec:
         owner: <YOUR GITHUB USERNAME> #e.g. eficode-academy
         # The Github repository
         repo: <YOUR GIT REPO> #e.g. argocd-katas
-
+        tokenRef: # your github token
+          secretName: student-<NUMBER>-github-token # the name of the secret that contains your github token
+          key: token # the key in the secret that contains your github token
         # Labels is used to filter the PRs that you want to target. (optional)
         labels:
         - test

@@ -18,6 +18,8 @@ Thus the ApplicationSet controller does not create/modify/delete Kubernetes reso
 
 ### Overview
 
+- Create a github token
+- Add the token to a secret in the argocd namespace
 - Create an applicationset manifest
 - Test with a pull request
 - Close the pull request
@@ -26,6 +28,41 @@ Thus the ApplicationSet controller does not create/modify/delete Kubernetes reso
 
 <details>
 <summary>More Details</summary>
+
+#### Create a github token
+
+* Go to your github account settings and [create a new token](https://github.com/settings/tokens) with the following permissions:
+
+![github token permissions](img/github-token-permissions.png)
+
+* Copy the token to your clipboard
+
+#### Add the token to a secret in the argocd namespace
+
+* Create a secret in the argocd namespace with the token
+
+```bash
+
+kubectl create secret generic --dry-run=client student-<NUMBER>-github-token -n argocd -o yaml --from-literal token=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 > secret.yaml
+
+```
+
+* Edit the secret and replace `<NUMBER>` with your number (student-X)
+
+* Apply the secret
+
+```bash
+kubectl apply -f secret.yaml
+
+```
+
+* Check that the secret is there
+
+```bash
+
+kubectl get secrets -n argocd
+
+```
 
 #### Create an applicationset manifest
 
@@ -45,7 +82,9 @@ spec:
         owner: <YOUR GITHUB USERNAME> #e.g. eficode-academy
         # The Github repository
         repo: <YOUR GIT REPO> #e.g. argocd-katas
-
+        tokenRef: # your github token
+          secretName: student-<NUMBER>-github-token # the name of the secret that contains your github token
+          key: token # the key in the secret that contains your github token
         # Labels is used to filter the PRs that you want to target. (optional)
         labels:
         - test
