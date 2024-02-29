@@ -260,4 +260,4 @@ kubectl delete -f applicationsets/pull-request.yaml
 * [ApplicationSet](https://argocd-applicationset.readthedocs.io/en/stable/)
 * [ApplicationSet Generators](https://argocd-applicationset.readthedocs.io/en/stable/Generators/)
 * [ApplicationSet Templates](https://argocd-applicationset.readthedocs.io/en/stable/Template/)
-
+* [ApplicationSet Pr example](https://dev.to/camptocamp-ops/using-argocd-pull-request-generator-to-review-application-modifications-236e)
