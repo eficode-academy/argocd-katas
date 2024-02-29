@@ -7,6 +7,7 @@ Exercise list in order:
 * [ArgoCD And Helm](argocd-and-helm.md)
 * [App of Apps](app-of-apps.md)
 * [ApplicationSets](applicationsets.md)
+* [Projects](projects.md)
 * [Sealed Secrets](sealed-secrets.md) (Not done yet)
 
 ## Using this outside of the workshop
@@ -14,6 +15,7 @@ Exercise list in order:
 You need to have ArgoCD installed and running.
 All exercises should work on minikube, or kind.
 You can refer to the [installation link](https://argo-cd.readthedocs.io/en/stable/operator-manual/installation/) for how to install ArgoCD.
+You do not need the HA setup for the exercises.
 
 ## Repository Structure
 
