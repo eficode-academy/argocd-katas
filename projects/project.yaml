@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: student-x-project # remember to change this!
+  namespace: argocd
+spec:
+  description: A project for students to play with
+  destinations:
+  - name: in-cluster
+    namespace: student-x #remember to change this!
+    server: https://kubernetes.default.svc
+  namespaceResourceBlacklist:
+  - group: rbac.authorization.k8s.io
+    kind: Role
+  sourceRepos:
+  - https://github.com/eficode-academy/argocd-katas.git
