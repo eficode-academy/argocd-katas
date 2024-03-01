@@ -139,7 +139,9 @@ The project restricts the deployment of `Role` resources, so the application wil
 
 ### Optional: Create an application outside your namespace
 
-If time permits, try to create an application that is deployed to a namespace that is not allowed by the project.
+If time permits, try to create an application that is deployed to a namespace that is not allowed by the project.  
+>  **NOTE:** Don't do this by simply manipulating the destination of the application you just applied as that will 
+> potentially interfere with the other students exercises. 
 
 What are the differences in the error messages, compared to the previous application?
 
