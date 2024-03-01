@@ -4,7 +4,7 @@ metadata:
   name: student-x-project # remember to change this!
   namespace: argocd
 spec:
-  description: A project for students to play with
+  description: A project for student-x to play with # remember to change this!
   destinations:
   - name: in-cluster
     namespace: student-x #remember to change this!
