@@ -56,22 +56,22 @@ metadata:
   name: student-x-project # remember to change this!
   namespace: argocd
 spec:
-  description: A project for students to play with
+  description: A project for student-x to play with # remember to change this!
   destinations:
-  - name: in-cluster
-    namespace: student-x #remember to change this!
-    server: https://kubernetes.default.svc
+    - name: in-cluster
+      namespace: student-x #remember to change this!
+      server: https://kubernetes.default.svc
   namespaceResourceBlacklist:
-  - group: rbac.authorization.k8s.io
-    kind: Role
+    - group: rbac.authorization.k8s.io
+      kind: Role
   sourceRepos:
-  - https://github.com/eficode-academy/argocd-katas.git
+    - https://github.com/eficode-academy/argocd-katas.git
 
 ```
 
 It is a simple project manifest that restricts the deployment to a specific namespace and restricts the deployment of `Role` resources.
 
-- change the `name` and `spec.destinations.namespace` fields to your student number
+- change the `name`, `spec.description` and `spec.destinations.namespace` fields to your student number
 
 **Apply the project manifest**
 
@@ -98,11 +98,28 @@ Go to the ArgoCD UI and see the project from there as well.
 
 - Click on `Settings` -> `Projects` and you should see the project there
 - Click on the project and see the details. Here you can see the different options that can be set for the project.
+- Verify that the description reflects your student number as well, e.g `a project for student-0 to play with`
 
 **Apply the application manifest that violates the restrictions**
 
-- Open the file [application.yaml](projects/application.yaml) in the projects folder. It looks like the following
-- Change the `name`, `project` and `namespace` fields to your student number.
+- Open the file [application.yaml](projects/application.yaml) in the projects folder. It looks like the following:
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: student-x-quotes-flask # remember to change this!
+  namespace: argocd
+spec:
+  project: student-x-project # remember to change this to your project name!
+  source:
+    repoURL: 'https://github.com/eficode-academy/argocd-katas.git'
+    path: quotes-flask/k8s
+    targetRevision: HEAD
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: student-x # remember to change this to your namespace!
+```
+- Change the `name`, `spec.project` and `spec.destination.namespace` fields to your student number.
 - Apply the application manifest
 
 ```bash
