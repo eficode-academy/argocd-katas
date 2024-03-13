@@ -8,7 +8,6 @@ ArgoCD is a declarative, GitOps continuous delivery tool for Kubernetes. It faci
 
 - Fork and manage repositories in GitHub.
 - Understand and utilize ArgoCD repositories.
-- Familiarize with the "app of apps" setup in ArgoCD.
 - Navigate and interact with the ArgoCD UI.
 
 ## Introduction
@@ -22,7 +21,7 @@ In this exercise we are creating your own instance of this templated repository,
 
 - Creating an instance of the template repository
 - Access and familiarize with the ArgoCD UI.
-- Setup an "app of apps" within ArgoCD.
+- Deploy your first application through the UI.
 
 ### Step by Step Instructions
 
@@ -59,7 +58,7 @@ git config --global user.name
 
 ![Use this template](img/template.png)
 
--  Select your GitHub user as the owner and name the repository (f.x. argocd-katas-training). Leave the repo public to have unlimited action minutes.
+-  Select your GitHub user as the owner and name the repository (f.x. argocd-katas-training). Leave the repo public for argo to be able to see it.
 
 > :bulb: **From this point forward, all actions should be performed in the repository you just created, not the template repository**
 
