@@ -47,7 +47,7 @@ We are going to try out restrictions with the `appproject` kind. We will apply a
 
 **Create a project manifest**
 
-Look at the file [project.yaml](projects/project.yaml) in the projects folder. It looks like the folllowing:
+Look at the file [project.yaml](projects/project.yaml) in the projects folder. It looks like the following:
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
