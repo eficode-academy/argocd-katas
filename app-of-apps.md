@@ -33,8 +33,8 @@ In this exercise, we will work on organizing and managing Argo CD applications m
 
 ## Step 1: Create Bootstrap App Manifest
 
-1. Navigate to the root of your local clone of the exercise repository.
-2. Create a file named `bootstrap-app.yaml` with the following content:
+1. On your workstation vs-code:
+2. Create a file named `bootstrap-app.yaml` anywhere, with the following content:
 
 :bulb: NB! Make sure to replace the placeholders with your own values.
 
