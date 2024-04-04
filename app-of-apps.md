@@ -44,6 +44,8 @@ kind: Application
 metadata:
   name: bootstrap-student-<YOURNUMBER>
   namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
     server: https://kubernetes.default.svc
