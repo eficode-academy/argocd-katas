@@ -43,7 +43,7 @@ Thus the ApplicationSet controller does not create/modify/delete Kubernetes reso
 
 ```bash
 
-kubectl create secret generic --dry-run=client student-<NUMBER>-github-token -n argocd -o yaml --from-literal token=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 > secret.yaml
+kubectl create secret generic --dry-run=client student-<NUMBER>-github-token -n argocd -o yaml --from-literal token=github_pat_yourtokenhere > secret.yaml
 
 ```
 
