@@ -118,7 +118,7 @@ spec:
           prune: true
           selfHeal: true
 ```
-
+* take the contents of the file, and paste it into a file in your workstation. The file could be named ´appset.yaml´.
 * edit the file and replace
     * `<YOUR GITHUB USERNAME>` with your github username
     * `<YOUR GIT REPO>` with your git repo
@@ -128,7 +128,7 @@ spec:
 * Apply the manifest
 
 ```bash
-kubectl apply -f applicationsets/pull-request.yaml
+kubectl apply -f appset.yaml
 ```
 
 * Make sure that it is there by listing the applicationsets: `k get applicationsets.argoproj.io -n argocd`.
