@@ -107,7 +107,7 @@ spec:
           - name: image.tag
             value: latest
           - name: prefix
-            value: argo
+            value: <YOUR PREFIX>
           - name: app
             value: "todo-{{head_short_sha}}"
       destination:
