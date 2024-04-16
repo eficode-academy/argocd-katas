@@ -88,7 +88,7 @@ The file that you will be saving looks like this, with the `<NUMBER>` being your
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: student-<NUMBER>-jenkins
+  name: <YourName>-jenkins
   namespace: argocd
 spec:
   project: default
