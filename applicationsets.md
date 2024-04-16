@@ -81,7 +81,7 @@ spec:
         # The GitHub organization or user.
         owner: <YOUR GITHUB USERNAME> #e.g. eficode-academy
         # The Github repository
-        repo: <YOUR GIT REPO> #e.g. argocd-katas
+        repo: <YOUR GIT REPO> #Just the repository name e.g. argocd-katas. Not your entire URL
         tokenRef: # your github token
           secretName: student-<NUMBER>-github-token # the name of the secret that contains your github token
           key: token # the key in the secret that contains your github token
