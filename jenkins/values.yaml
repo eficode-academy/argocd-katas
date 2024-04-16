@@ -2,4 +2,4 @@ service:
   type: NodePort
 persistence:
   enabled: false
-jenkinsPassword: student
+jenkinsPassword: student6
