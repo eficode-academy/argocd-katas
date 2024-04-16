@@ -209,7 +209,8 @@ Events:                    <none>
 
 #### Test with a pull request
 
-* Create a pull request in your git repo. The change does not matter at this time, since we are not using the source code in the pull request.
+* Create a pull request in your git repo. The change does not matter at this time, since we are not using the source code in the pull request. 💡 The name of your branch needs to have all lowercase characters, otherwise it will not work.
+
 
 * Remember to set the label `test` on the pull request. The label does not exist, so create it in the Github UI.
 
