@@ -5,7 +5,7 @@ metadata:
   labels:
     app: frontend
   name: frontend
-specsss:
+spec:
   replicas: 2
   selector:
     matchLabels:
