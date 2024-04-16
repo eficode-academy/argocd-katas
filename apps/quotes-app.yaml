@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: quotes-student-6
+  namespace: argocd
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: student-6
+  project: default
+  source:
+    repoURL: https://github.com/eficode-academy/argocd-katas.git  # Update this URL if the helm chart is in a different repo
+    targetRevision: HEAD
+    path: quotes-flask/helm/quotes-flask
+    helm:
+      valueFiles:
+        - values.yaml
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
