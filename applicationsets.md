@@ -107,7 +107,7 @@ spec:
           - name: image.tag
             value: latest
           - name: prefix
-            value: <YOUR PREFIX>
+            value: <PREFIX>
           - name: app
             value: "todo-{{head_short_sha}}"
       destination:
@@ -124,6 +124,7 @@ spec:
     * `<YOUR GIT REPO>` with your git repo
     * `<YOUR NAMESPACE>` with your namespace
     * `<NUMBER>` with your number (student-X)
+    * `<YOUR PREFIX>` The first part before `eficode.academy` as `gitops.eficode.academy`
 
 * Apply the manifest
 
