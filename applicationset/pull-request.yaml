@@ -17,7 +17,7 @@ spec:
         # Labels is used to filter the PRs that you want to target. (optional)
         labels:
         - test
-      requeueAfterSeconds: 180
+      requeueAfterSeconds: 60
   template:
     metadata:
       name: 'todo-<NUMBER>-{{branch}}-{{number}}'
