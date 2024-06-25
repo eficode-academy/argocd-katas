@@ -138,7 +138,7 @@ postgres-7bc8b45445-kshd8   1/1     Running   1          20h
 
 **Troubleshooting Faulty Manifests**
 
-* Intentionally introduce an error in one of the Kubernetes manifests in your GitHub repository (e.g., a typo in a field name).
+* Intentionally introduce an error in one of the Kubernetes manifests `.spec` part in your GitHub repository (e.g., a typo in a field name).
 * Try to sync the application in ArgoCD. The sync will fail.
 * In the ArgoCD UI, navigate to the `Events` tab under `app details` for the `quotes-flask` application. Here, you can see detailed error messages that will help you identify the issue.
 * Fix the error in the manifest, commit, and push the changes to the repository.
