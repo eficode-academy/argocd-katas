@@ -31,7 +31,7 @@ Thus the ApplicationSet controller does not create/modify/delete Kubernetes reso
 
 #### Create a github token
 
-* Go to your github account settings and [create a new token](https://github.com/settings/tokens) with the following permissions:
+* Go to your github account settings and [create a new token](https://github.com/settings/tokens?type=beta) with the following permissions:
 
 ![github token permissions](img/github-token-permissions.png)
 
