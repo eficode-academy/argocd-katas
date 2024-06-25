@@ -90,6 +90,8 @@ kind: Application
 metadata:
   name: <YourName>-jenkins
   namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   sources:
@@ -133,6 +135,8 @@ kind: Application
 metadata:
   name: quotes-student-<YOURNUMBER>
   namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
     server: https://kubernetes.default.svc
