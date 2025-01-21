@@ -135,8 +135,6 @@ sources:
 
 - Click save.
 
-> :bulb: Argo UI may break when you click save. This is because the multi source feature is still in beta. If this happens, you can just refresh the page and it should be fine.
-
 ![Jenkins sync problems](img/jenkins-app-sync-problem.png)
 
 > :bulb: It might also be that the application has a hard time syncing the new pod. You can try to delete the replica set and see if it works. If not, you can delete the application and try again.
