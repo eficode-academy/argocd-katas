@@ -79,7 +79,7 @@ In this exercise, you will:
 ### Tasks
 
 **Deploying Jenkins with Bitnami Helm**
-- Look into the repository site to see that a repository called `bitnami` with the URL `https://charts.bitnami.com/bitnami` is there.
+- Look into the repository site (Click `settings`, and then `repositories`) to see that a repository called `bitnami` with the URL `https://charts.bitnami.com/bitnami` is there.
 - Click on `Applications` in the navigation bar.
 - Click on `New App` to create a new application.
 - Fill in the following details:
