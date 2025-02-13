@@ -16,7 +16,7 @@ spec:
           key: token # the key in the secret that contains your github token
         # Labels is used to filter the PRs that you want to target. (optional)
         labels:
-        - test
+        - enhancement
       requeueAfterSeconds: 60
   template:
     metadata:
