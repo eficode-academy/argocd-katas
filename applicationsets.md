@@ -87,7 +87,7 @@ spec:
           key: token # the key in the secret that contains your github token
         # Labels is used to filter the PRs that you want to target. (optional)
         labels:
-        - test
+        - enhancement
       requeueAfterSeconds: 60
   template:
     metadata:
@@ -155,7 +155,7 @@ Spec:
     Pull Request:
       Github:
         Labels:
-          test
+          enhancement
         Owner:                sofusalbertsen
         Repo:                 argocd-katas
       Requeue After Seconds:  180
@@ -213,7 +213,7 @@ Events:                    <none>
 * Create a pull request in your git repo. The change does not matter at this time, since we are not using the source code in the pull request. 💡 The name of your branch needs to have all lowercase characters, otherwise it will not work.
 
 
-* Remember to set the label `test` on the pull request. The label does not exist, so create it in the Github UI.
+* Remember to set the label `enhancement` on the pull request. The label does not exist, so create it in the Github UI.
 
 * Check that an application has been created in ArgoCD
 
